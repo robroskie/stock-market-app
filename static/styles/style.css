@@ -1,6 +1,44 @@
 body{
+    background: #272C3C;
+}
 
-    background: #d1d5db;
+/* Main container */
+.main-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+
+/* Stock container */
+.stock-container{
+    /* display: flex; */
+    width: 75%;
+    padding-top: 6%;
+    margin: 0 auto;
+}
+
+
+/* Stock container img */
+#stock-container-img {
+    flex-shrink: 0;
+    min-width: 100%;
+    min-height: 100%
+}
+
+/* Ending date */
+.dl{
+    /* margin-right: auto; */
+    flex-basis:40%;
+}
+
+
+
+/* Ending date */
+.dr{
+    /* margin-left: auto; */
+    flex-basis:40%;
+
 }
 
 .height{
@@ -24,12 +62,11 @@ body{
 
 .form span{
 
-        position: absolute;
+    position: absolute;
     right: 17px;
     top: 13px;
     padding: 2px;
     border-left: 1px solid #d1d5db;
-
 }
 
 .left-pan{
@@ -49,7 +86,6 @@ body{
 }
 
 .form-input:focus{
-
     box-shadow: none;
     border:none;
 }
