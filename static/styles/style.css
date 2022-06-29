@@ -16,6 +16,8 @@ body{
     width: 75%;
     padding-top: 6%;
     margin: 0 auto;
+
+    position: relative;
 }
 
 
@@ -25,6 +27,13 @@ body{
     min-width: 100%;
     min-height: 100%
 }
+
+.text-date{
+    font-size: 1.25em;
+    color: #acbca4;
+}
+
+
 
 /* Ending date */
 .dl{
@@ -37,12 +46,13 @@ body{
 /* Ending date */
 .dr{
     /* margin-left: auto; */
+    align-content: flex-end;
     flex-basis:40%;
-
+    position: absolute;
+    right: 0;
 }
 
 .height{
-
     height: 100vh;
 }
 
@@ -88,4 +98,42 @@ body{
 .form-input:focus{
     box-shadow: none;
     border:none;
+}
+
+
+th{
+    text-align: center;
+}
+table,
+td {
+    border: 1px solid #333;
+    background-color: #d4a4ac;
+}
+
+.news-container{
+    margin: 5em auto;
+}
+
+thead,
+tfoot {
+    background-color: #333;
+    color: #fff;
+
+}
+
+.news-container{
+    display:flex;
+    justify-content: center;
+}
+
+#t1{
+   flex-basis: 53%;
+}
+
+#t2{
+    flex-basis: 23%;
+}
+
+#search-box{
+    flex-basis: 10%;
 }
