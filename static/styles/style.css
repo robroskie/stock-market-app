@@ -1,10 +1,15 @@
 body{
     background: #272C3C;
+
 }
 
 /* Main container */
 .main-container {
+    max-width: 95%;
+    margin: auto;
+
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: space-between;
   }
@@ -12,30 +17,27 @@ body{
 
 /* Stock container */
 .stock-container{
-    /* display: flex; */
-    width: 75%;
-    padding-top: 1em;
-    margin: 0 auto;
+    display: grid;
+    width: 55%;
 
-    position: relative;
-    align-items: center;
-    justify-content: center;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+    grid-template-areas:"a1 a1" "a2 b2";
 }
+
 
 
 /* Stock container img */
 #stock-container-img {
-    /* display: flex; */
-    /* flex-shrink: 0; */
-    /* min-width: 100%;
-    min-height: 100% */
-    position: relative; 
-    width: 65%;
-    /* height: 75%; */
-    left: 50%;
-    transform: translateX(-50%);
-    /* max-width: 100%;
-    /* margin: auto; */ 
+    background-color:red;
+    display:grid;
+    align-content:center;
+    justify-content:center;
+    color:white;
+
+    width: 200%;
+
+    grid-area: a1;
 
 }
 
@@ -48,20 +50,22 @@ body{
 
 /* Ending date */
 .dl{
-    /* margin-right: auto; */
-    flex-basis:40%;
+    background-color:purple;
+
+    grid-area: a2;
 }
 
 
 
 /* Ending date */
 .dr{
-    /* margin-left: auto; */
-    align-content: flex-end;
-    flex-basis:40%;
-    position: absolute;
-    right: 0;
+    background-color:red;
+    text-align: right;
+    grid-area: b2;
 }
+
+
+
 
 .height{
     height: 100vh;
