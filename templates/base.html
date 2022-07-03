@@ -59,16 +59,20 @@
       <!-- Stock chart container -->
       <div class="stock-container">
         <div class="stock-container-img">
-          <img
+          <!-- <img
             id="stock-container-img"
             src="images/temp/plot.png"
             alt="images/placeholder1.png"
+          /> -->
+          <img
+            id="stock-container-img"
+            src="{{url_for('static', filename='images/temp/plot.png')}}"
           />
         </div>
         <div class="dl">
           <!-- <form method="GET" action="/DailyStats">  -->
           <span class="text-date">Starting date</span>
-          A = <input type="date" class="date-left" name="date-left" />
+          <input type="date" id="date-left" name="date-left" />
           <!-- </form> -->
         </div>
 
@@ -88,7 +92,7 @@
           </thead>
           <tbody>
             <tr>
-              <td>
+              <td id='test'>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
                 sit amet porttitor metus, in porttitor velit. Aliquam pharetra
                 imperdiet lorem, at laoreet neque. Suspendisse felis tellus,
@@ -191,8 +195,8 @@
 
     <!-- JS and JQuery files -->
     <script
-      src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-      integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+      src="https://code.jquery.com/jquery-3.6.0.js"
+      integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
       crossorigin="anonymous"
     ></script>
     <script
@@ -205,6 +209,10 @@
       integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
       crossorigin="anonymous"
     ></script>
-    <script src='scripts/script.js'></script>
+    <!-- <script type="text/javascript" src="static/scripts/script.js"></script> -->
+    <script
+      type="text/javascript"
+      src="{{ url_for('static', filename='script.js') }}"
+    ></script>
   </body>
 </html>

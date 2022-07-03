@@ -9,7 +9,7 @@ $(document).ready(function () {
       type: "get",
       data: { dateStart: dateStart, dateEnd: dateEnd },
       success: function (response) {
-        $("#test").html("<p>" + response.result.toString() + "</p>");
+        $(".result").html("<p>" + response.result.toString() + "</p>");
       },
     });
   });
