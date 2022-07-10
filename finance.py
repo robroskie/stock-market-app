@@ -1,14 +1,8 @@
+
 import yfinance as yf
-import matplotlib.pyplot as plt
-import numpy as np
-import matplotlib.pyplot as plt
-import matplotlib.cbook as cbook
 import mplfinance as mpf
-
-msft = yf.Ticker("MSFT")
-
 # get stock info
-msft.info
+# msft.info
 
 # startDate = '2020-01-01'
 # endDate = '2022-12-01'
@@ -27,6 +21,7 @@ msft.info
 # plt = mpf.plot(hist, savefig = 'templates/images/temp/plot.png')
 
 
-def generatePlot(startDate, endDate):
-    hist = msft.history(start=startDate, end=endDate)
-    plt = mpf.plot(hist, savefig = 'templates/images/temp/plot.png')
+# def generatePlot(startDate, endDate):
+msft = yf.Ticker("MSFT")
+hist = msft.history(start='2020-01-01', end='2022-12-01')
+mpf.plot(hist, savefig = 'static/plot7.png')
