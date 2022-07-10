@@ -14,10 +14,8 @@ $(document).ready(function () {
       type: "GET",
       data: {dateStart : dateStart, dateEnd : dateEnd},
 			success: function(response){
-        console.log('success\n');
-        // console.log(resp.path);
-        $('#stock-container-img').attr('src', "static/plot7.png");
-        
+        // $('#stock-container-img').attr('src', "/static/images/sn.jpg");
+        $('#stock-container-img').attr('src', "/static/images/plot9.png");
 				// console.log(response);
 			},
 			error: function(error){

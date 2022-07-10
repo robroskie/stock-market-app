@@ -19,25 +19,15 @@ import mplfinance as mpf
 import logging
 logging.basicConfig(level=logging.DEBUG)
 
-app = Flask(__name__)
+app = Flask(__name__, static_url_path="/static", static_folder="static")
 
 
 
 @app.route("/main/")
 def main(name=None):
     return render_template('base.html', name=name)
-    
-@app.route("/base/")
-def base(name=None):
-    return render_template('base.html', name=name)
-    
-@app.route("/tests/")
-def test(name=None):
-    # msft = yf.Ticker("MSFT")
-    # hist = msft.history(start='2020-01-01', end='2022-12-01')
-    # mpf.plot(hist, savefig = 'static/plot7.png')
-    return "<p>Hello, World!</p>"
 
+    
 @app.route("/")
 def hello_world():
     return "<p>Hello, World!</p>"
@@ -46,12 +36,12 @@ def hello_world():
 @app.route('/calculate_result', methods=['GET'])
 def calculate_result():
     msft = yf.Ticker("MSFT")
-    hist = msft.history(start='2020-01-01', end='2022-12-01')
-    mpf.plot(hist, savefig = 'static/plot7.png')
+    hist = msft.history(start='2018-01-01', end='2022-12-01')
+    mpf.plot(hist, savefig = 'static/images/plot9.png')
 
-    # time.sleep(10)
-    start = str(request.args.get('dateStart'))
-    end = str(request.args.get('dateEnd'))
+    # time.sleep(3)
+    # start = str(request.args.get('dateStart'))
+    # end = str(request.args.get('dateEnd'))
 
     # hist = msft.history(start=start, end=end)
 
@@ -59,15 +49,17 @@ def calculate_result():
     # hist = msft.history(start='2020-01-01', end='2022-12-01')
     # mpf.plot(hist, savefig = 'static/plot7.png')
 
-    path='images/temp/plot.png'  
-    return json.dumps({path:path}), 200, {'Content-Type':'application/json'} 
+    # path='images/temp/plot.png'  
+    # return json.dumps({path:path}), 200, {'Content-Type':'application/json'} 
+
+    return 'hi'
 
 
-@app.route('/calculate_result', methods=['GET'])
-def generatePlot(startDate, endDate):
-    msft = yf.Ticker("MSFT")
-    hist = msft.history(start='2020-01-01', end='2022-12-01')
-    mpf.plot(hist, savefig = 'static/plot9.png')
+# @app.route('/calculate_result', methods=['GET'])
+# def generatePlot(startDate, endDate):
+#     msft = yf.Ticker("MSFT")
+#     hist = msft.history(start='2020-01-01', end='2022-12-01')
+#     mpf.plot(hist, savefig = 'static/images/plot9.png')
 
 
 
