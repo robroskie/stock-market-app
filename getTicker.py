@@ -13,4 +13,4 @@ def getTicker (company_name):
     # print(json.dumps(response, indent=4, sort_keys=True))
     return response
 
-getTicker('microsoft')
+print(getTicker('microsoft'))

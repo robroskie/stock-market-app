@@ -47,15 +47,12 @@ $(document).ready(function () {
           let data = [];
           let availableTags = [];
 
-          // console.log(data);
-          // JSON.parse(
           let resultJSON = response["bestMatches"];
-          // console.log(resultJSON);
           for (let i = 0; i < resultJSON.length; i++) {
             availableTags.push({
               label:
                 resultJSON[i]["2. name"] +
-                "Symbol: " +
+                "          Symbol: " +
                 resultJSON[i]["1. symbol"],
             });
             console.log(resultJSON[i]["1. symbol"]);
@@ -74,9 +71,35 @@ $(document).ready(function () {
 
   $('#search-box').keypress(function(event){
     var keycode = (event.keyCode ? event.keyCode : event.which);
+    let searchVal = $("#search-box").val();
+
     if(keycode == '13'){
-      alert('You pressed a "enter" key in textbox');  
+      alert('You pressed a "enter" key in textbox :)');  
+      let dateStart = $("#date-left").val();
+      let dateEnd = $("#date-right").val();
+
+      console.log(searchVal);
+      const ticker = searchVal.substring(searchVal.indexOf(': ') + 2);
+      console.log(ticker);
+
+      $.ajax({
+        url: "/calculate_result",
+        cache: false,
+        type: "GET",
+        data: {dateStart: dateStart, dateEnd: dateEnd, ticker: ticker},
+        success: function (response) {
+          $("#stock-container-img").attr("src", "/static/images/plot9.png");
+        },
+        error: function (error) {
+          console.log(error);
+        },
+      });
     }
+    else if(keycode == 8 || keycode == 46 ){
+      console.log('erasing all!');
+      searchVal = '';
+    }
+
   });
 
 

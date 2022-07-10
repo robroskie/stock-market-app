@@ -28,11 +28,18 @@ def hello_world():
 def calculate_result():
     start = str(request.args.get('dateStart'))
     end = str(request.args.get('dateEnd'))
+    tck = ''
+    vals = ''
+
+    if 'ticker' in request.args:
+        tck = str(request.args.get('ticker'))
 
     # flash('date range...')
-
-    msft = yf.Ticker("MSFT")
-    hist = msft.history(start=start, end=end)
+    if tck != '':
+        vals = yf.Ticker(tck)
+    else:    
+        vals = yf.Ticker("MSFT")
+    hist = vals.history(start=start, end=end)
     if os.path.exists('static/images/plot9.png'):
         os.remove('static/images/plot9.png')
     mpf.plot(hist, savefig = 'static/images/plot9.png')
