@@ -3,7 +3,7 @@ $(document).ready(function () {
   // Set default dates
   $("#date-left").val("2020-09-29");
   $("#date-right").val("2021-09-29");
-  $("#search-box").val("");
+  $("#search-box").val("tesla");
 
   // Ajax request to update chart when dates changed
   $("#date-left, #date-right").on("change", function () {
