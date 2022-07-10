@@ -1,28 +1,17 @@
 from flask import Flask
 from flask import request
 from flask import render_template
-import json
-import time
 import os
 
 import matplotlib 
 matplotlib.use('Agg')
 
-import yfinance as yf
-import matplotlib.pyplot as plt
-
-
-import numpy as np
-
-import matplotlib.cbook as cbook
 import mplfinance as mpf
+import yfinance as yf
 
-import logging
-logging.basicConfig(level=logging.DEBUG)
+import getTicker as gt
 
 app = Flask(__name__, static_url_path="/static", static_folder="static")
-
-
 
 @app.route("/main/")
 def main(name=None):
@@ -39,34 +28,27 @@ def calculate_result():
     start = str(request.args.get('dateStart'))
     end = str(request.args.get('dateEnd'))
 
+    # or should this be done as client-side validation?
+    # flash('date range...')
+
     msft = yf.Ticker("MSFT")
     hist = msft.history(start=start, end=end)
     if os.path.exists('static/images/plot9.png'):
         os.remove('static/images/plot9.png')
     mpf.plot(hist, savefig = 'static/images/plot9.png')
 
-    # time.sleep(3)
+    return 'updated'
 
 
-    # hist = msft.history(start=start, end=end)
+@app.route('/get_ticker', methods=['GET'])
+def get_ticker():
+    searchVal = str(request.args.get('searchVal'))
+    tickers = gt.getTicker(searchVal)
 
-    # msft = yf.Ticker("MSFT")
-    # hist = msft.history(start='2020-01-01', end='2022-12-01')
-    # mpf.plot(hist, savefig = 'static/plot7.png')
+    # or should this be done as client-side validation?
+    # flash('date range...')
 
-    # path='images/temp/plot.png'  
-    # return json.dumps({path:path}), 200, {'Content-Type':'application/json'} 
-
-    return 'hi'
-
-
-# @app.route('/calculate_result', methods=['GET'])
-# def generatePlot(startDate, endDate):
-#     msft = yf.Ticker("MSFT")
-#     hist = msft.history(start='2020-01-01', end='2022-12-01')
-#     mpf.plot(hist, savefig = 'static/images/plot9.png')
-
-
+    return tickers
 
 if __name__ == '__main__':
     app.run(debug=True)

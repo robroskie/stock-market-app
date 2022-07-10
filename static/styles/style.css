@@ -64,7 +64,10 @@ body{
     grid-area: b2;
 }
 
-
+/* Search box */
+.form-control{
+    width: 50%;
+}
 
 
 .height{
