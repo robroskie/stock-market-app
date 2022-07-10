@@ -3,6 +3,7 @@ from flask import request
 from flask import render_template
 import json
 import time
+import os
 
 import matplotlib 
 matplotlib.use('Agg')
@@ -35,13 +36,17 @@ def hello_world():
 
 @app.route('/calculate_result', methods=['GET'])
 def calculate_result():
+    start = str(request.args.get('dateStart'))
+    end = str(request.args.get('dateEnd'))
+
     msft = yf.Ticker("MSFT")
-    hist = msft.history(start='2018-01-01', end='2022-12-01')
+    hist = msft.history(start=start, end=end)
+    if os.path.exists('static/images/plot9.png'):
+        os.remove('static/images/plot9.png')
     mpf.plot(hist, savefig = 'static/images/plot9.png')
 
     # time.sleep(3)
-    # start = str(request.args.get('dateStart'))
-    # end = str(request.args.get('dateEnd'))
+
 
     # hist = msft.history(start=start, end=end)
 
