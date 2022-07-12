@@ -43,6 +43,8 @@ $(document).ready(function () {
         type: "GET",
         data: { searchVal: searchVal },
         success: function (response) {
+
+          // This code block populates the autocomplete searchbox
           console.log(JSON.stringify(response));
           let data = [];
           let availableTags = [];
@@ -61,6 +63,10 @@ $(document).ready(function () {
           }
           console.log(availableTags);
           changeInput(availableTags);
+
+
+
+
         },
         error: function (error) {
           console.log(error);
@@ -69,26 +75,34 @@ $(document).ready(function () {
     }
   });
 
+  
   $('#search-box').keypress(function(event){
     var keycode = (event.keyCode ? event.keyCode : event.which);
-    let searchVal = $("#search-box").val();
+    let ticker = $("#search-box").val();
 
     if(keycode == '13'){
       alert('You pressed a "enter" key in textbox :)');  
       let dateStart = $("#date-left").val();
       let dateEnd = $("#date-right").val();
 
-      console.log(searchVal);
-      const ticker = searchVal.substring(searchVal.indexOf(': ') + 2);
+      // console.log(searchVal);
+      // const ticker = searchVal.substring(searchVal.indexOf(': ') + 2);
       console.log(ticker);
 
       $.ajax({
-        url: "/calculate_result",
+        url: "/get_news",
         cache: false,
         type: "GET",
-        data: {dateStart: dateStart, dateEnd: dateEnd, ticker: ticker},
+        data: {ticker: ticker},
         success: function (response) {
-          $("#stock-container-img").attr("src", "/static/images/plot9.png");
+          // $("#stock-container-img").attr("src", "/static/images/plot9.png");
+
+
+          // This code block updates the news section according to selected ticker val
+
+
+
+
         },
         error: function (error) {
           console.log(error);
@@ -99,7 +113,6 @@ $(document).ready(function () {
       console.log('erasing all!');
       searchVal = '';
     }
-
   });
 
 

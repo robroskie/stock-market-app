@@ -10,6 +10,7 @@ import mplfinance as mpf
 import yfinance as yf
 
 import getTicker as gt
+import getNews as gn
 
 
 app = Flask(__name__, static_url_path="/static", static_folder="static")
@@ -52,6 +53,14 @@ def get_ticker():
     tickers = gt.getTicker(searchVal)
 
     return tickers
+
+@app.route('/get_news', methods=['GET'])
+def get_news():
+    ticker = str(request.args.get('ticker'))
+    # news = gn.getNews(ticker)
+    news = gn.getNews('MSFT')
+
+    return news
 
 
 if __name__ == '__main__':
