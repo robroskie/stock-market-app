@@ -50,8 +50,9 @@ $(document).ready(function () {
           let availableTags = [];
 
           let resultJSON = response["bestMatches"];
-          for (let i = 0; i < resultJSON.length; i++) {
-            availableTags.push({
+          if(resultJSON != undefined){
+            for (let i = 0; i < resultJSON.length; i++) {
+              availableTags.push({
               label:
                 resultJSON[i]["2. name"] +
                 "          Symbol: " +
@@ -60,6 +61,8 @@ $(document).ready(function () {
             console.log(resultJSON[i]["1. symbol"]);
             console.log(resultJSON[i]["2. name"]);
             data.push([resultJSON[i]["2. name"], resultJSON[i]["1. symbol"]]);
+          }
+
           }
           console.log(availableTags);
           changeInput(availableTags);
@@ -85,17 +88,13 @@ $(document).ready(function () {
       let dateStart = $("#date-left").val();
       let dateEnd = $("#date-right").val();
 
-      // console.log(searchVal);
-      // const ticker = searchVal.substring(searchVal.indexOf(': ') + 2);
-      console.log(ticker);
-
       $.ajax({
         url: "/get_news",
         cache: false,
         type: "GET",
         data: {ticker: ticker},
         success: function (response) {
-          // $("#stock-container-img").attr("src", "/static/images/plot9.png");
+          $("#stock-container-img").attr("src", "/static/images/plot9.png");
 
 
           // This code block updates the news section according to selected ticker val

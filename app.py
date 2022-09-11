@@ -57,8 +57,11 @@ def get_ticker():
 @app.route('/get_news', methods=['GET'])
 def get_news():
     ticker = str(request.args.get('ticker'))
+    tickerSYMBOL = ticker.split("Symbol: ")
+
     # news = gn.getNews(ticker)
-    news = gn.getNews('MSFT')
+    print('ticker: (flask)' + tickerSYMBOL)
+    news = gn.getNews('tickerSYMBOL')
 
     return news
 
